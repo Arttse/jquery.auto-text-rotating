@@ -1,102 +1,177 @@
-# jQuery.auto-text-rotating <sup>1.0.0</sup>
+# jQuery.auto-text-rotating [![README RUS](https://img.shields.io/badge/README-%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-brightgreen.svg)](README_RUS.md)
+[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](http://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](http://badge.fury.io/js/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://badge.fury.io/bo/jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/arttsesoft/jquery-auto-text-rotating)  [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
 
-jQuery плагин для изменения/вращения текста или HTML, одиночно или в группе, автоматически с сепаратором.
+> jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.
 
+## Quick start
 
-## Быстрый старт
+### Step one. Installation
 
-### Шаг первый
+#### NPM
+```
+npm install jquery.auto-text-rotating
+```
+
+#### Bower
+```
+bower install jquery.auto-text-rotating
+```
+
+#### Link required files
 ```html
-<!-- Подключение jQuery библиотеки (Например с серверов Google) -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Подключение плагина -->
+<!-- Include jQuery library (served from Google) -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include jQuery plugin -->
 <script src="jquery.auto-text-rotating.min.js"></script>
 ```
 
-### Шаг второй
-Создание HTML элемента:
+### Step two. Create HTML markup
 ```html
-<div class="element">Первый|Второй|Третий</div>
+<div class="element">First|Second|Third</div>
 ```
 
-### Шаг третий
+### Step three
+
+#### Initialization on one element
 ```javascript
-/** Инициализация на элементе (single) */
 $('element').atrotating();
 ```
 
-### На группе элементов поочередно
-Плагин находит все выбранные элементы и меняет текст поочередно:
+#### Initialization of the group of elements alternately
 ```javascript
 $('element').atrotating({
     method: 'group'
 });
 ```
-При:
+When HTML:
 ```html
-<div class="element">Первый|Четвертый</div>
-<div class="element">Второй|Пятый</div>
-<div class="element">Третий|Шестой</div>
+<div class="element">First|Fourth</div>
+<div class="element">Second|Fifth</div>
+<div class="element">Third|Sixth</div>
 ```
 
-## Настройки
+## Settings
 
-Плагин принимает настройки в виде объекта.
+The plugin takes the settings as an object.
 
-Описание настроек:
+### type
+Type: `string`
+Default: `text`
+Available:
 
-- **`type`** — _string_. Выбрать тип обработки данных. _Стандартно 'text'._
-    - `'text'` — обрабатывается просто текст, вырезаются все html теги.
-    - `'html'` — обрабатывается текст вместе с html тегами.
+- `text` — processed just text, cut out all html tags.
+- `html` — processed text with html tags.
 
-- **`method`** — _string_. Метод обработки элементов. _Стандартно 'single'._
-    - `single` — обрабатывать по одному единовременно.
-    - `group` — обрабатывать каждый элемент поочередно в группе.
+### method
+Type: `string`
+Default: `single`
+Available:
 
-- **`separator`** — _string_. Разделитель для разделения текста на части, которые будут меняться. _Стандартно '|'._
+- `single` — to handle one at a time.
+- `group` — to process each element in turn in the group.
 
-- **`animation`** — _string_. Анимация при смене текста. _Стандартно 'fade'._
-    - `'fade'` — эффект растворения.
-    - `'scale'` — эффект увеличения и уменьшения.
-    - `'spin'` — эффект увеличения и уменьшения + кручения-верчения.
+### separator
+Type: `string`
+Default: `|`
 
-- **`animationSpeed`** — _int_ или _array_. Скорость выполнения анимации. _Стандартно 300._
-    - как _int_, например — `animationSpeed: 150`. Таким образом задается _одинаковое_ значение для скорости анимирования элемента при появлении и исчезновении.
-    - как _array_, например — `animationSpeed: [300,400]`. Таким образом задается _разное_ значение для скорости анимирования элемента при появлении и исчезновении. Первое значение для появления, второе для исчезновения.
+The delimiter to separate the text into parts that will change.
 
-- **`animationEasing`** — _string_ или _array_. Динамика выполнения анимации. В jQuery доступны 'linear' и 'swing', но вы можете использовать и другие, подключив соответствующие расширения. _Стандартно 'swing'._
-    - как _string_, например — `animationEasing: 'linear'`. Таким образом задается _одинаковое_ значение для динамики анимации элемента при появлении и исчезновении.
-    - как _array_, например — `animationEasing: ['swing','linear']`. Таким образом задается _разное_ значение для динамики анимации элемента при появлении и исчезновении. Первое значение для появления, второе для исчезновения.
+### animation
+Type: `string`
+Default: `fade`
 
-- **`animationType`** — _string_. Тип анимации. _Стандартно 'full'._
-    - `'full'` — анимирует выбранной анимацией появление и исчезновение.
-    - `'in'` — анимирует выбранной анимацией только появление.
-    - `'out'` — анимирует выбранной анимацией только исчезновение.
+Animation when changing text.
 
-- **`animationScale`** — _array_. Изменение размера в анимации. Применимо только к анимациям `'scale'` и `'spin'`. _Стандартно [1,0]._
-    - `[1,0]` — первое значение массива (1) - какой будет окончательный размер элемента после постепенного появления текста. Например указав 1 - это стандартный размер, или указав 2 - это в два раза больше и т.д. Второе значение массива (0) - определяет окончательный размер после постепенного исчезновения элемента.
+Available:
 
-- **`animationType`** — _int_. Градус верчения-кручения элемента. Применимо только к анимации `'spin'`. _Стандартно 720._
+- `fade` — the effect of the gradual disappearance.
+- `scale` — the effect of increasing and decreasing the size of the element.
+- `spin` — the effect of increasing or decreasing the size of the element + rotate.
 
-- **`delay`** — _int_. _Стандартно 2000._
-    - при `method: 'single'` — задержка между сменой текста.
-    - при `method: 'group'` — задержка между сменой текста элементов группы поочередно.
+### animationSpeed
+Type: `number` or `array`
+Default: `300`
 
-- **`delayStart`** — _int_. Задержка перед первой сменой текста. _Стандартно 2000._
+The execution speed of animation in milliseconds.
 
-- **`delayGroup`** — _int_. _Стандартно 2000._
-    - при `method: 'single'` — не имеет никакого смысла.
-    - при `method: 'group'` — задержка между полным проходом смены текста по всем элементам группы.
+If you specify how `number`, for example — `animationSpeed: 150`, it will be set to the _same value_ for the speed of the animation element in the appearance and disappearance.
 
-- **`animateOne`** — _bool_. Анимировать текст, когда нет текста для смены. _Стандартно false._
+If you specify how `array`, for example — `animationSpeed: [300,400]`, it will set a _different value_ for the speed of the animation element in the appearance and disappearance. The first value for the appearance, second to disappearance.
 
-- **`trim`** — _bool_. Удалять пробельные символы в начале и в конце сменного текста. _Стандартно true._
+### animationEasing
+Type: `string` or `array`
+Default: `swing`
 
-- **`css`** — _object_. Вы можете добавить необходимые стили CSS на элемент.
+Dynamics of execution of the animation. In jQuery is available `linear` and `swing`, but you can use other by connecting the _appropriate extensions (for example, jQuery Easing)_.
 
+If you specify how `string`, for example — `animationEasing: 'linear'`, it will be set to the _same value_ for the dynamics of the animation element in the appearance and disappearance.
 
-## Лицензия
+If you specify how `array`, for example — `animationEasing: ['swing','linear']`, it will set a different value for the dynamics of the animation element in the appearance and disappearance. The first value for the appearance, second to disappearance.
 
-MIT.
+### animationType
+Type: `string`
+Default: `full`
 
-[LICENCE ENG](LICENSE.txt) [LICENSE RUS](LICENSE_RUS.txt)
+Available:
+- `full` — animates the selected animation the _appearance and disappearance_.
+- `in` — animates the selected animation _only appearance_.
+- `out` — animates the selected animation _only disappearance_.
+
+### animationScale
+Type: `array`
+Default: `[1,0]`
+
+Resize the animation. Only applies to animations `scale` and `spin`. The first value of the array what will be the final size of the element after the gradual appearance of the text. For example, 1 is the standard size, 2 - twice, etc. The second value of the array determines the final size after the gradual disappearance of the item.
+
+### animationRotateDeg
+Type: `number`
+Default: `720`
+
+The degree of rotation. Applies only to animation `spin`.
+
+### delay
+Type: `number`
+Default: `2000`
+
+- If you specify how `method: 'single'` — delay between the change of text in milliseconds.
+- If you specify how `method: 'group'` — delay between the changing of the text of the elements of the group alternately in milliseconds.
+
+### delayStart
+Type: `number`
+Default: `2000`
+
+The delay before changing the text.
+
+### delayGroup
+Type: `number`
+Default: `2000`
+
+- If you specify how `method: 'single'` — doesn't make any sense.
+- If you specify how `method: 'group'` — the delay between full bore change the text for all the elements of the group at a time.
+
+### animateOne
+Type: `boolean`
+Default: `false`
+
+Animate the element, if there are separate parts to change the text.
+
+### trim
+Type: `boolean`
+Default: `true`
+
+Remove whitespaces at the beginning and at the end of the replaceable parts of the text.
+
+### css
+Type: `object`
+Default: `undefined`
+
+You can add CSS styles to the element.
+
+```javascript
+$('element').atrotating({
+    css: {
+        "color": "#000",
+        "font-size": "20px"
+    }
+});
+```

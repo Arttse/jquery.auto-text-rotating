@@ -1,7 +1,7 @@
 {
   "name": "jquery.auto-text-rotating",
   "main": "jquery.auto-text-rotating.min.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Nikita «Arttse» Bystrov"
   ],
@@ -14,13 +14,18 @@
     "rotating",
     "automatic",
     "rotate",
-    "rotator",
     "fade",
     "separator"
+  ],
+  "ignore": [
+    ".jshintrc",
+    ".travis.yml",
+    "package.json",
+    "Gruntfile.js"
   ],
   "license": "MIT",
   "homepage": "https://github.com/Arttse/jquery.auto-text-rotating",
   "dependencies": {
-    "jquery": ">=1.7"
+    "jquery": ">=1.4.3"
   }
 }
