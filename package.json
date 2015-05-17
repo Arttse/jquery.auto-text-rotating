@@ -1,6 +1,6 @@
 {
   "name": "jquery.auto-text-rotating",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.",
   "main": "jquery.auto-text-rotating.min.js",
   "repository": {

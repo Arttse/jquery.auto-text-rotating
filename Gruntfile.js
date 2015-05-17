@@ -16,7 +16,7 @@ module.exports = function (grunt) {
                 '* <%= pkg.description %>\n' +
                 '* <%= pkg.repository.url %>\n' +
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
-                '* Licensed under the MIT license (see LICENSE.txt)\n' +
+                '* Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)\n' +
                 '* Version: <%= pkg.version %>\n' +
                 '*/\n'
             },
