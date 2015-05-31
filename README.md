@@ -1,9 +1,7 @@
 # jQuery.auto-text-rotating [![README RUS](https://img.shields.io/badge/README-%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-brightgreen.svg)](README_RUS.md)
-[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/arttsesoft/jquery-auto-text-rotating) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt) [![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org)
+[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/Arttse/jquery-auto-text-rotating) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt) [![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org) [![View Demo](https://img.shields.io/badge/View-Demo-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
 
 > jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.
-
-[![View Demo](https://img.shields.io/badge/View-Demo-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
 
 ## Quick start
 
@@ -52,9 +50,9 @@ When HTML:
 <div class="element">Third|Sixth</div>
 ```
 
-# Methods
+## Methods
 
-## init
+### init
 
 Initialization. Start changing parts of the text with the settings.
 
@@ -83,11 +81,11 @@ var settings = {
 $('element').atrotating('init', settings);
 ```
 
-### Settings 'init' method
+#### Settings 'init' method
 
 The plugin takes the settings as an object.
 
-#### type
+##### type
 Type: `string`  
 Default: `text`
 
@@ -96,7 +94,7 @@ Available:
 - `text` — processed just text, cut out all html tags.
 - `html` — processed text with html tags.
 
-#### method
+##### method
 Type: `string`  
 Default: `single`
 
@@ -105,13 +103,13 @@ Available:
 - `single` — to handle one at a time.
 - `group` — to process each element in turn in the group.
 
-#### separator
+##### separator
 Type: `string`  
 Default: `|`
 
 The delimiter to separate the text into parts that will change.
 
-#### animation
+##### animation
 Type: `string`  
 Default: `fade`
 
@@ -123,8 +121,10 @@ Available:
 - `fade` — the effect of the gradual disappearance.
 - `scale` — the effect of increasing and decreasing the size of the element.
 - `spin` — the effect of increasing or decreasing the size of the element + rotate.
+- `flipY` — the effect of flip horizontally.
+- `flipX` — the effect of flip vertically.
 
-#### animationSpeed
+##### animationSpeed
 Type: `number` or `array`  
 Default: `300`
 
@@ -134,7 +134,7 @@ If you specify how `number`, for example — `animationSpeed: 150`, it will be s
 
 If you specify how `array`, for example — `animationSpeed: [300,400]`, it will set a _different value_ for the speed of the animation element in the appearance and disappearance. The first value for the appearance, second to disappearance.
 
-#### animationEasing
+##### animationEasing
 Type: `string` or `array`  
 Default: `swing`
 
@@ -144,7 +144,7 @@ If you specify how `string`, for example — `animationEasing: 'linear'`, it wil
 
 If you specify how `array`, for example — `animationEasing: ['swing','linear']`, it will set a different value for the dynamics of the animation element in the appearance and disappearance. The first value for the appearance, second to disappearance.
 
-#### animationType
+##### animationType
 Type: `string`  
 Default: `full`
 
@@ -154,57 +154,61 @@ Available:
 - `in` — animates the selected animation _only appearance_.
 - `out` — animates the selected animation _only disappearance_.
 
-#### animationScale
+##### animationScale
 Type: `array`  
 Default: `[1,0]`
 
 Resize the animation. Only applies to animations `scale` and `spin`. The first value of the array what will be the final size of the element after the gradual appearance of the text. For example, 1 is the standard size, 2 - twice, etc. The second value of the array define the final size after the gradual disappearance of the item.
 
-#### animationRotateDeg
-Type: `number`  
+##### animationRotateDeg
+Type: `number` or `array`  
 Default: `720`
 
-The degree of rotation. Applies only to animation `spin`.
+The degree of rotation. Applies only to animations `spin`, `flipY`, `flipX`.
 
-#### delay
+If you specify how `number`, for example — `animationRotateDeg: 180`, it ill be set to 0 with appearance and 180 with the disappearance.
+
+If you specify how `array`, for example — `animationRotateDeg: [-90, 0]`, the first value for the appearance, the second for the disappearance. Excluding animation `spin`, there will always be 0 for appearance.
+
+##### delay
 Type: `number`  
 Default: `2000`
 
 - If you specify how `method: 'single'` — delay between the change of text in milliseconds.
 - If you specify how `method: 'group'` — delay between the changing of the text of the elements of the group alternately in milliseconds.
 
-#### delayStart
+##### delayStart
 Type: `number`  
 Default: `2000`
 
 The delay before changing the text.
 
-#### delayGroup
+##### delayGroup
 Type: `number`  
 Default: `2000`
 
 - If you specify how `method: 'single'` — doesn't make any sense.
 - If you specify how `method: 'group'` — the delay between full bore change the text for all the elements of the group at a time.
 
-#### animateOne
+##### animateOne
 Type: `boolean`  
 Default: `false`
 
 Animate the element, if there are separate parts to change the text.
 
-#### reverse
+##### reverse
 Type: `boolean`  
 Default: `false`
 
 Reverse rotation of the text. From the end.
 
-#### trim
+##### trim
 Type: `boolean`  
 Default: `true`
 
 Remove whitespaces at the beginning and at the end of the replaceable parts of the text.
 
-#### css
+##### css
 Type: `object`  
 Default: `undefined`
 
@@ -219,7 +223,7 @@ $('element').atrotating({
 });
 ```
 
-## stop
+### stop
 
 Stop the rotation of the text.
 
@@ -237,11 +241,11 @@ var settings = {
 $('element').atrotating('stop', settings);
 ```
 
-### Settings 'stop' method
+#### Settings 'stop' method
 
 The plugin takes the settings as an object.
 
-#### content
+##### content
 Type: `string`  
 Default: `currentPart`
 
@@ -252,19 +256,19 @@ Available:
 - `lastPart` — inserts the _last part_ of the original text, separated by the specified separator.
 - `currentPart` — inserts the last shows part of the original text at the time of stop of rotation, separated by the specified separator.
 
-#### separator
+##### separator
 Type: `string`  
 Default: taken from the settings when you initialize
 
 A separator for separating text into parts for insertion after the stop, it is necessary to `content`.
 
-#### trim
+##### trim
 Type: `boolean`  
 Default: taken from the settings when you initialize
 
 Remove whitespaces at the beginning and at the end of the text.
 
-## reinit
+### reinit
 
 Another initialization with the new settings.
 
@@ -284,6 +288,6 @@ var settings = {
 $('element').atrotating('reinit', settings);
 ```
 
-### Settings 'reinit' method
+#### Settings 'reinit' method
 
 Similar to the settings of the method `init`.

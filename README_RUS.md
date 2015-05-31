@@ -1,9 +1,7 @@
 # jQuery.auto-text-rotating [![README ENG](https://img.shields.io/badge/README-Show%20in%20English-brightgreen.svg)](README.md)
-[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/arttsesoft/jquery-auto-text-rotating) [![License MIT RUS](https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MIT-blue.svg)](LICENSE_RUS.txt) [![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org/lang/ru/)
+[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/Arttse/jquery-auto-text-rotating) [![License MIT RUS](https://img.shields.io/badge/%D0%BB%D0%B8%D1%86%D0%B5%D0%BD%D0%B7%D0%B8%D1%8F-MIT-blue.svg)](LICENSE_RUS.txt) [![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org/lang/ru/) [![Посмотреть Демо](https://img.shields.io/badge/%D0%9F%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D0%94%D0%B5%D0%BC%D0%BE-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
 
 > jQuery плагин для изменения/вращения текста или HTML, одиночно или в группе, автоматически с сепаратором.
-
-[![Посмотреть Демо](https://img.shields.io/badge/%D0%9F%D0%BE%D1%81%D0%BC%D0%BE%D1%82%D1%80%D0%B5%D1%82%D1%8C-%D0%94%D0%B5%D0%BC%D0%BE-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
 
 ## Быстрый старт
 
@@ -52,9 +50,9 @@ $('element').atrotating({
 <div class="element">Третий|Шестой</div>
 ```
 
-# Методы
+## Методы
 
-## init
+### init
 
 Инициализация. Запуск смены частей текста с настройками.
 
@@ -83,11 +81,11 @@ var settings = {
 $('element').atrotating('init', settings);
 ```
 
-### Настройки метода 'init'
+#### Настройки метода 'init'
 
 Плагин принимает настройки в виде объекта.
 
-#### type
+##### type
 Тип: `string`  
 По умолчанию: `text`
 
@@ -96,7 +94,7 @@ $('element').atrotating('init', settings);
 - `text` — обрабатывается просто текст, вырезаются все html теги.
 - `html` — обрабатывается текст вместе с html тегами.
 
-#### method
+##### method
 Тип: `string`  
 По умолчанию: `single`
 
@@ -105,13 +103,13 @@ $('element').atrotating('init', settings);
 - `single` — обрабатывать по одному единовременно.
 - `group` — обрабатывать каждый элемент поочередно в группе.
 
-#### separator
+##### separator
 Тип: `string`  
 По умолчанию: `|`
 
 Разделитель для разделения текста на части, которые будут меняться.
 
-#### animation
+##### animation
 Тип: `string`  
 По умолчанию: `fade`
 
@@ -123,8 +121,10 @@ $('element').atrotating('init', settings);
 - `fade` — эффект постепенного исчезновения элемента.
 - `scale` — эффект увеличения и уменьшения размера элемента.
 - `spin` — эффект увеличения и уменьшения + кручения-верчения.
+- `flipY` — эффект переворачивания горизонтально.
+- `flipX` — эффект переворачивания вертикально.
 
-#### animationSpeed
+##### animationSpeed
 Тип: `number` или `array`  
 По умолчанию: `300`
 
@@ -134,7 +134,7 @@ $('element').atrotating('init', settings);
 
 Если указать как `array`, например — `animationSpeed: [300,400]`, то будет задано _разное_ значение для скорости анимирования элемента при появлении и исчезновении. Первое значение для появления, второе для исчезновения.
 
-#### animationEasing
+##### animationEasing
 Тип: `string` или `array`  
 По умолчанию: `swing`
 
@@ -144,7 +144,7 @@ $('element').atrotating('init', settings);
 
 Если указать как `array`, например — `animationEasing: ['swing','linear']`, то будет задано _разное_ значение для динамики анимации элемента при появлении и исчезновении. Первое значение для появления, второе для исчезновения.
 
-#### animationType
+##### animationType
 Тип: `string`  
 По умолчанию: `full`
 
@@ -154,57 +154,61 @@ $('element').atrotating('init', settings);
 - `in` — анимирует выбранной анимацией _только появление_.
 - `out` — анимирует выбранной анимацией _только исчезновение_.
 
-#### animationScale
+##### animationScale
 Тип: `array`  
 По умолчанию: `[1,0]`
 
 Изменение размера в анимации. Применимо только к анимациям `scale` и `spin`. Первое значение массива - какой будет окончательный размер элемента после постепенного появления текста. Например, 1 - это стандартный размер, 2 - это в два раза больше и т.д. Второе значение массива - определяет окончательный размер после постепенного исчезновения элемента.
 
-#### animationRotateDeg
-Тип: `number`  
+##### animationRotateDeg
+Тип: `number` или `array`  
 По умолчанию: `720`
 
-Градус верчения-кручения элемента. Применимо только к анимации `spin`.
+Градус (deg) верчения-кручения элемента. Применимо только к анимацииям `spin`, `flipY`, `flipX`.
 
-#### delay
+Если указать как `number`, например — `animationRotateDeg: 180`, то будет задано 0 при появлении и 180 при исчезновении.
+
+Если указать как `array`, например — `animationRotateDeg: [-90, 0]`, первое значение для появления, второе для исчезновения. Исключение анимация `spin`, там всегда будет 0 при появлении.
+
+##### delay
 Тип: `number`  
 По умолчанию: `2000`
 
 - При `method: 'single'` — задержка между сменой текста элемента в миллисекундах.
 - При `method: 'group'` — задержка между сменой текста элементов группы поочередно в миллисекундах.
 
-#### delayStart
+##### delayStart
 Тип: `number`  
 По умолчанию: `2000`
 
 Задержка перед началом смены текста.
 
-#### delayGroup
+##### delayGroup
 Тип: `number`  
 По умолчанию: `2000`
 
 - При `method: 'single'` — не имеет никакого смысла.
 - При `method: 'group'` — задержка между полным проходом смены текста по всем элементам группы за раз.
 
-#### animateOne
+##### animateOne
 Тип: `boolean`  
 По умолчанию: `false`
 
 Анимировать элемент, если нет раздельных частей для смены текста.
 
-#### reverse
+##### reverse
 Тип: `boolean`  
 По умолчанию: `false`
 
 Ротация текста с конца.
 
-#### trim
+##### trim
 Тип: `boolean`  
 По умолчанию: `true`
 
 Удаление пробельных символов в начале и в конце частей сменного текста.
 
-#### css
+##### css
 Тип: `object`  
 По умолчанию: `undefined`
 
@@ -219,7 +223,7 @@ $('element').atrotating({
 });
 ```
 
-## stop
+### stop
 
 Остановка ротации текста.
 
@@ -237,11 +241,11 @@ var settings = {
 $('element').atrotating('stop', settings);
 ```
 
-### Настройки метода 'stop'
+#### Настройки метода 'stop'
 
 Плагин принимает настройки в виде объекта.
 
-#### content
+##### content
 Тип: `string`  
 По умолчанию: `currentPart`
 
@@ -252,19 +256,19 @@ $('element').atrotating('stop', settings);
 - `lastPart` — вставляет последнюю часть от оригинального текста, отделенную заданным разделителем.
 - `currentPart` — вставляет последнюю показанную часть от оригинального текста на момент остановки ротации, отделенную заданным разделителем.
 
-#### separator
+##### separator
 Тип: `string`  
 По умолчанию: берется из настройки при инициализации
 
 Разделитель для разделения текста на части для вставки после остановки, необходимо для `content`.
 
-#### trim
+##### trim
 Тип: `boolean`  
 По умолчанию: берется из настройки при инициализации
 
 Удаление пробельных символов в начале и в конце текста.
 
-## reinit
+### reinit
 
 Очередная инициализация с новыми настройками.
 
@@ -284,6 +288,6 @@ var settings = {
 $('element').atrotating('reinit', settings);
 ```
 
-### Настройки метода 'reinit'
+#### Настройки метода 'reinit'
 
 Аналогично настройкам метода `init`.

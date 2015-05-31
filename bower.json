@@ -1,7 +1,7 @@
 {
   "name": "jquery.auto-text-rotating",
   "main": "jquery.auto-text-rotating.min.js",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "authors": [
     "Nikita «Arttse» Bystrov"
   ],
@@ -14,8 +14,11 @@
     "rotating",
     "automatic",
     "rotate",
+    "separator",
     "fade",
-    "separator"
+    "scale",
+    "spin",
+    "flip"
   ],
   "ignore": [
     ".jshintrc",

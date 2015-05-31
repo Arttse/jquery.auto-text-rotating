@@ -3,7 +3,7 @@
  * https://github.com/Arttse/jquery.auto-text-rotating
  * Copyright (c) 2015 Nikita «Arttse» Bystrov
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
- * Version: 1.1.0
+ * Version: 1.2.0
  */
 
 (function( $ ){
@@ -58,7 +58,8 @@
                 ),
                 delay = settings.delay,
                 animationSpeed = ( typeof settings.animationSpeed === 'object' ) ? settings.animationSpeed : [settings.animationSpeed,settings.animationSpeed],
-                animationEasing = ( typeof settings.animationEasing === 'object' ) ? settings.animationEasing : [settings.animationEasing,settings.animationEasing];
+                animationEasing = ( typeof settings.animationEasing === 'object' ) ? settings.animationEasing : [settings.animationEasing,settings.animationEasing],
+                animationRotateDeg = ( typeof settings.animationRotateDeg === 'object' ) ? settings.animationRotateDeg : [0,settings.animationRotateDeg];
 
             /**
              * Get all the elements
@@ -230,13 +231,13 @@
 
                             $.fx.step.transformSpinIn = function(fx) {
                                 fx.start = settings.animationScale[1];
-                                calcTransform = ( settings.animationRotateDeg / 100 ) * ((100 / settings.animationScale[0]) * fx.now);
+                                calcTransform = ( animationRotateDeg[1] / 100 ) * ((100 / settings.animationScale[0]) * fx.now);
                                 spinFxCSS(fx, calcTransform);
                             };
 
                             $.fx.step.transformSpinOut = function(fx) {
                                 fx.start = settings.animationScale[0];
-                                calcTransform = ( settings.animationRotateDeg / 100 ) * ((100 / settings.animationScale[0]) * fx.now);
+                                calcTransform = ( animationRotateDeg[1] / 100 ) * ((100 / settings.animationScale[0]) * fx.now);
                                 if ( fx.pos !== 0 ) {
                                     spinFxCSS(fx, calcTransform);
                                 }
@@ -260,9 +261,9 @@
                                 );
                             } else if ( settings.animationType === 'in' ) {
                                 $t.css({
-                                    '-webkit-transform': 'rotate(' + settings.animationRotateDeg + 'deg) scale(' + settings.animationScale[1] + ')',
-                                    '-ms-transform': 'rotate(' + settings.animationRotateDeg + 'deg) scale(' + settings.animationScale[1] + ')',
-                                    'transform': 'rotate(' + settings.animationRotateDeg + 'deg) scale(' + settings.animationScale[1] + ')'
+                                    '-webkit-transform': 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')',
+                                    '-ms-transform': 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')',
+                                    'transform': 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')'
                                 });
                                 txt( $t, parts[indexParts] ).
                                     animate(
@@ -281,6 +282,136 @@
                                                 '-webkit-transform': 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
                                                 '-ms-transform': 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
                                                 'transform': 'rotate(0deg) scale(' + settings.animationScale[0] + ')'
+                                            });
+
+                                    }
+                                );
+                            }
+                        },
+
+                        /**
+                         * Animation flip horizontally
+                         * ---------------------
+                         * Анимация переворачивания, горизонтально
+                         */
+                        flipY: function(){
+
+                            function flipYFxCSS ( fx ) {
+                                $(fx.elem).css({
+                                    '-webkit-transform': 'rotateY(' + fx.now + 'deg)',
+                                    'transform': 'rotateY(' + fx.now + 'deg)'
+                                });
+                            }
+
+                            $.fx.step.transformFlipYIn = function (fx) {
+                                fx.start = animationRotateDeg[1];
+                                flipYFxCSS(fx);
+                            };
+
+                            $.fx.step.transformFlipYOut = function (fx) {
+                                fx.start = animationRotateDeg[0];
+                                if (fx.pos !== 0) {
+                                    flipYFxCSS(fx);
+                                }
+                            };
+
+                            if ( settings.animationType === 'full' ) {
+                                $t.animate(
+                                    { transformFlipYOut: animationRotateDeg[1] },
+                                    animationSpeed[1],
+                                    animationEasing[1],
+                                    function () {
+                                        txt($t, parts[indexParts]).
+                                            animate({ transformFlipYIn: animationRotateDeg[0] }, animationSpeed[0], animationEasing[0]);
+                                    }
+                                );
+                            } else if ( settings.animationType === 'in' ) {
+                                $t.css({
+                                    '-webkit-transform': 'rotateY(' + animationRotateDeg[0] + 'deg)',
+                                    'transform': 'rotateY(' + animationRotateDeg[0] + 'deg)'
+                                });
+                                txt( $t, parts[indexParts] ).
+                                    animate(
+                                    { transformFlipYIn: animationRotateDeg[0] },
+                                    animationSpeed[0],
+                                    animationEasing[0]
+                                );
+
+                            } else if ( settings.animationType === 'out' ) {
+                                $t.animate(
+                                    { transformFlipYOut: animationRotateDeg[1] },
+                                    animationSpeed[1],
+                                    animationEasing[1],
+                                    function(){
+                                        txt( $t, parts[indexParts]).
+                                            css({
+                                                '-webkit-transform': 'rotateY(' + animationRotateDeg[0] + 'deg)',
+                                                'transform': 'rotateY(' + animationRotateDeg[0] + 'deg)'
+                                            });
+
+                                    }
+                                );
+                            }
+                        },
+
+                        /**
+                         * Animation flip vertically
+                         * ---------------------
+                         * Анимация переворачивания, вертикально
+                         */
+                        flipX: function(){
+
+                            function flipXFxCSS ( fx ) {
+                                $(fx.elem).css({
+                                    '-webkit-transform': 'rotateX(' + fx.now + 'deg)',
+                                    'transform': 'rotateX(' + fx.now + 'deg)'
+                                });
+                            }
+
+                            $.fx.step.transformFlipXIn = function (fx) {
+                                fx.start = animationRotateDeg[1];
+                                flipXFxCSS(fx);
+                            };
+
+                            $.fx.step.transformFlipXOut = function (fx) {
+                                fx.start = animationRotateDeg[0];
+                                if (fx.pos !== 0) {
+                                    flipXFxCSS(fx);
+                                }
+                            };
+
+                            if ( settings.animationType === 'full' ) {
+                                $t.animate(
+                                    { transformFlipXOut: animationRotateDeg[1] },
+                                    animationSpeed[1],
+                                    animationEasing[1],
+                                    function () {
+                                        txt($t, parts[indexParts]).
+                                            animate({ transformFlipXIn: animationRotateDeg[0] }, animationSpeed[0], animationEasing[0]);
+                                    }
+                                );
+                            } else if ( settings.animationType === 'in' ) {
+                                $t.css({
+                                    '-webkit-transform': 'rotateX(' + animationRotateDeg[0] + 'deg)',
+                                    'transform': 'rotateX(' + animationRotateDeg[0] + 'deg)'
+                                });
+                                txt( $t, parts[indexParts] ).
+                                    animate(
+                                    { transformFlipXIn: animationRotateDeg[0] },
+                                    animationSpeed[0],
+                                    animationEasing[0]
+                                );
+
+                            } else if ( settings.animationType === 'out' ) {
+                                $t.animate(
+                                    { transformFlipXOut: animationRotateDeg[1] },
+                                    animationSpeed[1],
+                                    animationEasing[1],
+                                    function(){
+                                        txt( $t, parts[indexParts]).
+                                            css({
+                                                '-webkit-transform': 'rotateX(' + animationRotateDeg[0] + 'deg)',
+                                                'transform': 'rotateX(' + animationRotateDeg[0] + 'deg)'
                                             });
 
                                     }
@@ -406,6 +537,14 @@
 
                                 case 'spin':
                                     animation.spin();
+                                    break;
+
+                                case 'flipY':
+                                    animation.flipY();
+                                    break;
+
+                                case 'flipX':
+                                    animation.flipX();
                                     break;
 
                                 default:
