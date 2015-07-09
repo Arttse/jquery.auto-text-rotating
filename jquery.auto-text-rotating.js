@@ -3,7 +3,7 @@
  * https://github.com/Arttse/jquery.auto-text-rotating
  * Copyright (c) 2015 Nikita «Arttse» Bystrov
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
- * Version: 1.2.0
+ * Version: 1.3.0
  */
 
 (function( $ ){
@@ -43,6 +43,9 @@
                         animationScale: [1,0],
                         animationRotateDeg: 720,
 
+                        animateCssClass: 'animated',
+                        animateCssAnimation: ['bounceIn', 'bounceOut'],
+
                         delay: 2000,
                         delayStart: 2000,
                         delayGroup: 2000,
@@ -56,10 +59,12 @@
                     },
                     settingsUser
                 ),
+                animateEventEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
                 delay = settings.delay,
                 animationSpeed = ( typeof settings.animationSpeed === 'object' ) ? settings.animationSpeed : [settings.animationSpeed,settings.animationSpeed],
                 animationEasing = ( typeof settings.animationEasing === 'object' ) ? settings.animationEasing : [settings.animationEasing,settings.animationEasing],
-                animationRotateDeg = ( typeof settings.animationRotateDeg === 'object' ) ? settings.animationRotateDeg : [0,settings.animationRotateDeg];
+                animationRotateDeg = ( typeof settings.animationRotateDeg === 'object' ) ? settings.animationRotateDeg : [0,settings.animationRotateDeg],
+                animateCssAnimation = ( typeof settings.animateCssAnimation === 'object' ) ? settings.animateCssAnimation : [settings.animateCssAnimation,settings.animateCssAnimation];
 
             /**
              * Get all the elements
@@ -277,7 +282,7 @@
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function(){
-                                        txt( $t, parts[indexParts]).
+                                        txt( $t, parts[indexParts] ).
                                             css({
                                                 '-webkit-transform': 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
                                                 '-ms-transform': 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
@@ -417,6 +422,60 @@
                                     }
                                 );
                             }
+                        },
+
+                        /**
+                         * Animation using Animate.css
+                         * -----------------------------------------------
+                         * Анимация с использованием Animate.css
+                         */
+                        animateCss: function(){
+
+                            function animateCssIn () {
+                                animateCssDuration( $t, settings.animationSpeed[0] );
+                                txt($t, parts[indexParts]).
+                                    addClass(animateCssAnimation[0]).
+                                    one( animateEventEnd, function () {
+                                        $t.removeClass(animateCssAnimation[0]);
+                                    });
+                            }
+
+                            function animateCssDuration( $t, dur ) {
+                                $t.css({
+                                    '-webkit-animation-duration': dur + 'ms',
+                                    '-moz-animation-duration': dur + 'ms',
+                                    '-o-animation-duration': dur + 'ms',
+                                    'animation-duration': dur + 'ms'
+                                });
+                            }
+
+                            if ( settings.animationType === 'full' ) {
+                                if ( animateCssAnimation[0] === animateCssAnimation[1] ) {
+                                    animateCssIn();
+                                } else {
+                                    animateCssDuration( $t, settings.animationSpeed[1] );
+                                    $t.
+                                        addClass(animateCssAnimation[1]).
+                                        one( animateEventEnd, function () {
+                                            animateCssDuration( $t, settings.animationSpeed[0] );
+                                            txt($t, parts[indexParts]).
+                                                removeClass(animateCssAnimation[1]).
+                                                addClass(animateCssAnimation[0]).
+                                                one( animateEventEnd, function () {
+                                                    $t.removeClass(animateCssAnimation[0]);
+                                                });
+                                        });
+                                }
+                            } else if ( settings.animationType === 'in' ) {
+                                animateCssIn();
+                            } else if ( settings.animationType === 'out' ) {
+                                animateCssDuration( $t, settings.animationSpeed[1] );
+                                $t.
+                                    addClass( animateCssAnimation[1] ).
+                                    one( animateEventEnd, function(){
+                                        txt($t, parts[indexParts]).removeClass( animateCssAnimation[1] );
+                                    });
+                            }
                         }
                     };
 
@@ -424,6 +483,11 @@
                     $t.html( $t.data().atrContentOriginal );
                 } else {
                     $t.data('atrContentOriginal', $t.html());
+                }
+
+                if ( settings.animation === 'animateCss' ) {
+                    $t.addClass( settings.animateCssClass );
+                    $t.data('atrAnimateCssClass', settings.animateCssClass );
                 }
 
                 /**
@@ -454,7 +518,7 @@
 
                 $.each( txt($t).split( settings.separator ), function( key, value ) {
                     if ( settings.trim ) {
-                        parts.push( value.replace(/^\s+|\s+$/g, '') );
+                        parts.push( $.trim( value ) );
                     } else {
                         parts.push( value );
                     }
@@ -545,6 +609,10 @@
 
                                 case 'flipX':
                                     animation.flipX();
+                                    break;
+
+                                case 'animateCss':
+                                    animation.animateCss();
                                     break;
 
                                 default:
@@ -639,15 +707,15 @@
                         break;
 
                     case 'firstPart':
-                        $t.html( ( settings.trim ) ? parts[0].replace(/^\s+|\s+$/g, '') : parts[0] );
+                        $t.html( ( settings.trim ) ? $.trim( parts[0] ) : parts[0] );
                         break;
 
                     case 'lastPart':
-                        $t.html( ( settings.trim ) ? parts[parts.length - 1].replace(/^\s+|\s+$/g, '') : parts[parts.length - 1] );
+                        $t.html( ( settings.trim ) ? $.trim( parts[parts.length - 1] ) : parts[parts.length - 1] );
                         break;
 
                     case 'currentPart':
-                        $t.html( ( settings.trim ) ? parts[$t.data().atrIndexParts].replace(/^\s+|\s+$/g, '') : parts[$t.data().atrIndexParts] );
+                        $t.html( ( settings.trim ) ? $.trim( parts[$t.data().atrIndexParts] ) : parts[$t.data().atrIndexParts] );
                         break;
                 }
             }
@@ -663,6 +731,16 @@
                  * Проверим, инициализирован ли скрипт
                  */
                 if ( data.atrInit ) {
+
+                    /**
+                     * Check the Animate.css class. Cleansing
+                     * -----------------------------------------
+                     * Проверка на класс Animate.css. Очищение
+                     */
+                    if ( data.atrAnimateCssClass ) {
+                        $t.removeClass( data.atrAnimateCssClass );
+                        $t.removeData('atrAnimateCssClass');
+                    }
 
                     /**
                      * Check for a delay before the start of the shift of the text. Cleansing
@@ -747,7 +825,7 @@
              * ----------------------------------
              * Вернем для использования в цепочке
              */
-            return this.each( function(){} );
+            return this.each( $.noop );
         }
     };
 

@@ -1,6 +1,6 @@
 {
   "name": "jquery.auto-text-rotating",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.",
   "main": "jquery.auto-text-rotating.min.js",
   "repository": {
@@ -29,10 +29,14 @@
     "automatic",
     "rotate",
     "separator",
+    "easing",
     "fade",
     "scale",
     "spin",
-    "flip"
+    "flip",
+    "animate",
+    "css",
+    "animate.css"
   ],
   "author": {
     "name": "Nikita «Arttse» Bystrov",
