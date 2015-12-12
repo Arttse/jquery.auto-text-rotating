@@ -1,5 +1,13 @@
 # jQuery.auto-text-rotating [![README RUS](https://img.shields.io/badge/README-%D0%9F%D0%BE%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%20%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC-brightgreen.svg)](README_RUS.md)
-[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest) [![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating) [![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating) [![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating) [![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/Arttse/jquery-auto-text-rotating) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt) [![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org) [![devDependency Status](https://david-dm.org/Arttse/jquery.auto-text-rotating/dev-status.svg)](https://david-dm.org/Arttse/jquery.auto-text-rotating#info=devDependencies) [![View Demo](https://img.shields.io/badge/View-Demo-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
+[![GitHub version](https://badge.fury.io/gh/Arttse%2Fjquery.auto-text-rotating.svg)](https://github.com/Arttse/jquery.auto-text-rotating/releases/latest)
+[![npm version](https://badge.fury.io/js/jquery.auto-text-rotating.svg)](https://www.npmjs.com/package/jquery.auto-text-rotating)
+[![Bower version](https://badge.fury.io/bo/jquery.auto-text-rotating.svg)](http://bower.io/search/?q=jquery.auto-text-rotating)
+[![Travis Ci Build Status](https://api.travis-ci.org/Arttse/jquery.auto-text-rotating.svg)](https://travis-ci.org/Arttse/jquery.auto-text-rotating)
+[![Codacy Badge](https://www.codacy.com/project/badge/f7bd8ee47c0d476fbbecfcc2e6acb4a4)](https://www.codacy.com/app/Arttse/jquery-auto-text-rotating)
+[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
+[![SemVer 2.0](https://img.shields.io/badge/semver-2.0-blue.svg)](http://semver.org)
+[![devDependency Status](https://david-dm.org/Arttse/jquery.auto-text-rotating/dev-status.svg)](https://david-dm.org/Arttse/jquery.auto-text-rotating#info=devDependencies)
+[![View Demo](https://img.shields.io/badge/View-Demo-CA81FD.svg)](http://arttse.name/jquery-auto-text-rotating/demo)
 
 > jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.
 
@@ -10,6 +18,50 @@
 - The ability to control the settings of the animation of the appearance of the text and disappearance.
 - 5 animations support functions smooth (Easing).
 - Support animations Animate.css.
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Quick start](#quick-start)
+  - [Step one. Installation](#step-one-installation)
+    - [NPM](#npm)
+    - [Bower](#bower)
+    - [Link required files](#link-required-files)
+  - [Step two. Create HTML markup](#step-two-create-html-markup)
+  - [Step three](#step-three)
+    - [Initialization on one element](#initialization-on-one-element)
+    - [Initialization of the group of elements alternately](#initialization-of-the-group-of-elements-alternately)
+- [Methods](#methods)
+  - [Method 'init'](#method-init)
+    - [Settings 'init' method](#settings-init-method)
+      - [type](#type)
+      - [method](#method)
+      - [separator](#separator)
+      - [animation](#animation)
+      - [animationSpeed](#animationspeed)
+      - [animationEasing](#animationeasing)
+      - [animationType](#animationtype)
+      - [animationScale](#animationscale)
+      - [animationRotateDeg](#animationrotatedeg)
+      - [animateCssClass](#animatecssclass)
+      - [animateCssAnimation](#animatecssanimation)
+      - [delay](#delay)
+      - [delayStart](#delaystart)
+      - [delayGroup](#delaygroup)
+      - [animateOne](#animateone)
+      - [reverse](#reverse)
+      - [trim](#trim)
+      - [css](#css)
+  - [Method 'stop'](#method-stop)
+    - [Settings 'stop' method](#settings-stop-method)
+      - [content](#content)
+      - [separator](#separator-1)
+      - [trim](#trim-1)
+  - [Method 'reinit'](#method-reinit)
+    - [Settings 'reinit' method](#settings-reinit-method)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Quick start
 
