@@ -2,6 +2,18 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        doctoc: {
+            options: {
+                bitbucket: false,
+                removeAd: true,
+                header: '## Table of Contents'
+            },
+            toc: {
+                options: {
+                    target: './README.md'
+                }
+            }
+        },
         jshint: {
             options: {
                 reporter: require('jshint-stylish'),
@@ -26,6 +38,7 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.loadNpmTasks('grunt-doctoc');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
