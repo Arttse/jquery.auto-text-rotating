@@ -3,7 +3,7 @@
  * https://github.com/Arttse/jquery.auto-text-rotating
  * Copyright (c) 2015 Nikita «Arttse» Bystrov
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
- * Version: 1.3.0
+ * Version: 1.3.1
  */
 
 (function( $ ){
@@ -585,40 +585,12 @@
                              * -----------------------------------
                              * Выбираем анимацию и работаем с ней
                              */
-                            switch ( settings.animation ) {
-
-                                case 'no':
-                                    animation.no();
-                                    break;
-
-                                case 'fade':
-                                    animation.fade();
-                                    break;
-
-                                case 'scale':
-                                    animation.scale();
-                                    break;
-
-                                case 'spin':
-                                    animation.spin();
-                                    break;
-
-                                case 'flipY':
-                                    animation.flipY();
-                                    break;
-
-                                case 'flipX':
-                                    animation.flipX();
-                                    break;
-
-                                case 'animateCss':
-                                    animation.animateCss();
-                                    break;
-
-                                default:
-                                    animation.fade();
-                                    break;
+                            if ( animation.hasOwnProperty( settings.animation ) ) {
+                                animation[settings.animation].call();
+                            } else {
+                                animation.fade();
                             }
+
                         };
 
                         if ( settings.method === 'single' ) {
