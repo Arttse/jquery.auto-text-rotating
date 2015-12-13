@@ -10,16 +10,6 @@
   "scripts": {
     "test": "grunt default"
   },
-  "files": [
-    "Gruntfile.js",
-    ".jshintrc",
-    "jquery.auto-text-rotating.js",
-    "jquery.auto-text-rotating.min.js",
-    "LICENSE.txt",
-    "LICENSE_RUS.txt",
-    "README.md",
-    "README_RUS.md"
-  ],
   "keywords": [
     "jquery",
     "plugin",
