@@ -59,6 +59,7 @@
                     },
                     settingsUser
                 ),
+                indexParts,
                 animateEventEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
                 delay = settings.delay,
                 animationSpeed = ( typeof settings.animationSpeed === 'object' ) ? settings.animationSpeed : [settings.animationSpeed,settings.animationSpeed],
@@ -431,15 +432,6 @@
                          */
                         animateCss: function(){
 
-                            function animateCssIn () {
-                                animateCssDuration( $t, settings.animationSpeed[0] );
-                                txt($t, parts[indexParts]).
-                                    addClass(animateCssAnimation[0]).
-                                    one( animateEventEnd, function () {
-                                        $t.removeClass(animateCssAnimation[0]);
-                                    });
-                            }
-
                             function animateCssDuration( $t, dur ) {
                                 $t.css({
                                     '-webkit-animation-duration': dur + 'ms',
@@ -447,6 +439,15 @@
                                     '-o-animation-duration': dur + 'ms',
                                     'animation-duration': dur + 'ms'
                                 });
+                            }
+
+                            function animateCssIn () {
+                                animateCssDuration( $t, settings.animationSpeed[0] );
+                                txt($t, parts[indexParts]).
+                                    addClass(animateCssAnimation[0]).
+                                    one( animateEventEnd, function () {
+                                        $t.removeClass(animateCssAnimation[0]);
+                                    });
                             }
 
                             if ( settings.animationType === 'full' ) {
@@ -529,7 +530,7 @@
                  * ------------------------------------
                  * Вставим содержимое первой части
                  */
-                var indexParts = ( settings.reverse ) ? parts.length - 1 : 0;
+                indexParts = ( settings.reverse ) ? parts.length - 1 : 0;
                 txt( $t, parts[indexParts] );
                 $t.data('atrIndexParts', indexParts);
 
