@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                 banner: '/*!\n' +
                 '* <%= pkg.description %>\n' +
                 '* <%= pkg.repository.url %>\n' +
-                '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
+                '* Copyright (c) 2015-<%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
                 '* Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)\n' +
                 '* Version: <%= pkg.version %>\n' +
                 '*/\n'

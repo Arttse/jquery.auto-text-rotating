@@ -60,6 +60,7 @@
       - [trim](#trim-1)
   - [Method 'reinit'](#method-reinit)
     - [Settings 'reinit' method](#settings-reinit-method)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -80,7 +81,7 @@ bower install jquery.auto-text-rotating
 #### Link required files
 ```html
 <!-- Include jQuery library (For example served from Google) -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <!-- Include jQuery plugin -->
 <script src="jquery.auto-text-rotating.min.js"></script>
 ```
@@ -370,3 +371,7 @@ $('.element').atrotating('reinit', settings);
 #### Settings 'reinit' method
 
 Similar to the settings of the method `init`.
+
+
+## License
+[MIT](http://www.opensource.org/licenses/mit-license.php) &copy; 2015-2016 Nikita «Arttse» Bystrov

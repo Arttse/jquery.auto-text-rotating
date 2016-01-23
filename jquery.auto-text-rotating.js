@@ -1,7 +1,7 @@
 /*!
  * jQuery plugin to change/rotation of text or html, single or group, automatically with a separator.
  * https://github.com/Arttse/jquery.auto-text-rotating
- * Copyright (c) 2015 Nikita «Arttse» Bystrov
+ * Copyright (c) 2015-2016 Nikita «Arttse» Bystrov
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
  * Version: 1.3.1
  */
