@@ -13,5 +13,9 @@
   "notypeof": false,
   "boss": false,
   "evil": false,
-  "browser": true
+  "browser": true,
+  "globals": {
+    "define": false,
+    "module": false
+    }
 }

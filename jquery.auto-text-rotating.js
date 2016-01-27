@@ -3,10 +3,21 @@
  * https://github.com/Arttse/jquery.auto-text-rotating
  * Copyright (c) 2015-2016 Nikita «Arttse» Bystrov
  * Licensed under the MIT license (http://www.opensource.org/licenses/mit-license.php)
- * Version: 1.3.1
+ * Version: 1.3.2
  */
 
-(function ( $ ) {
+(function ( factory ) {
+    if ( typeof define === 'function' && define.amd ) {
+        // AMD (Register as an anonymous module)
+        define ( ['jquery'], factory );
+    } else if ( typeof exports === 'object' ) {
+        // Node/CommonJS
+        module.exports = {};
+    } else {
+        // Browser globals
+        factory ( jQuery );
+    }
+} ( function ( $ ) {
 
     /**
      * Plugin methods
@@ -812,4 +823,4 @@
 
     };
 
-}) ( jQuery );
+} ));
