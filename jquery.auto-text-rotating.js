@@ -7,10 +7,10 @@
  */
 
 (function ( factory ) {
-    if ( typeof define === 'function' && define.amd ) {
+    if ( typeof define === "function" && define.amd ) {
         // AMD (Register as an anonymous module)
-        define ( ['jquery'], factory );
-    } else if ( typeof exports === 'object' ) {
+        define ( ["jquery"], factory );
+    } else if ( typeof exports === "object" ) {
         // Node/CommonJS
         module.exports = {};
     } else {
@@ -44,23 +44,23 @@
              */
             var settings            = $.extend (
                 {
-                    type   : 'text',
-                    method : 'single',
+                    type   : "text",
+                    method : "single",
 
-                    animation          : 'fade',
+                    animation          : "fade",
                     animationSpeed     : 300,
-                    animationEasing    : 'swing',
-                    animationType      : 'full',
+                    animationEasing    : "swing",
+                    animationType      : "full",
                     animationScale     : [
                         1,
                         0
                     ],
                     animationRotateDeg : 720,
 
-                    animateCssClass     : 'animated',
+                    animateCssClass     : "animated",
                     animateCssAnimation : [
-                        'bounceIn',
-                        'bounceOut'
+                        "bounceIn",
+                        "bounceOut"
                     ],
 
                     delay      : 2000,
@@ -68,7 +68,7 @@
                     delayGroup : 2000,
 
                     animateOne : false,
-                    separator  : '|',
+                    separator  : "|",
                     reverse    : false,
                     trim       : true,
 
@@ -77,21 +77,21 @@
                 settingsUser
             ),
                 indexParts,
-                animateEventEnd     = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+                animateEventEnd     = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
                 delay               = settings.delay,
-                animationSpeed      = ( typeof settings.animationSpeed === 'object' ) ? settings.animationSpeed : [
+                animationSpeed      = ( typeof settings.animationSpeed === "object" ) ? settings.animationSpeed : [
                     settings.animationSpeed,
                     settings.animationSpeed
                 ],
-                animationEasing     = ( typeof settings.animationEasing === 'object' ) ? settings.animationEasing : [
+                animationEasing     = ( typeof settings.animationEasing === "object" ) ? settings.animationEasing : [
                     settings.animationEasing,
                     settings.animationEasing
                 ],
-                animationRotateDeg  = ( typeof settings.animationRotateDeg === 'object' ) ? settings.animationRotateDeg : [
+                animationRotateDeg  = ( typeof settings.animationRotateDeg === "object" ) ? settings.animationRotateDeg : [
                     0,
                     settings.animationRotateDeg
                 ],
-                animateCssAnimation = ( typeof settings.animateCssAnimation === 'object' ) ? settings.animateCssAnimation : [
+                animateCssAnimation = ( typeof settings.animateCssAnimation === "object" ) ? settings.animateCssAnimation : [
                     settings.animateCssAnimation,
                     settings.animateCssAnimation
                 ];
@@ -103,7 +103,7 @@
              *
              * @type {Array}
              */
-            if ( settings.method === 'group' ) {
+            if ( settings.method === "group" ) {
                 var elements = [];
                 this.each ( function () {
                     elements.push ( this );
@@ -122,9 +122,9 @@
              */
             function txt ( $t, text ) {
                 if ( text ) {
-                    return ( settings.type === 'html' ) ? $t.html ( text ) : $t.text ( text );
+                    return ( settings.type === "html" ) ? $t.html ( text ) : $t.text ( text );
                 } else {
-                    return ( settings.type === 'html' ) ? $t.html () : $t.text ();
+                    return ( settings.type === "html" ) ? $t.html () : $t.text ();
                 }
             }
 
@@ -135,7 +135,7 @@
              */
             var action = function ( indexCurrent ) {
                 var $t        = $ ( this ),
-                    display   = $t.css ( 'display' ),
+                    display   = $t.css ( "display" ),
                     parts     = [],
                     animation = {
 
@@ -154,7 +154,7 @@
                          * Анимация постепенного исчезновения и появления
                          */
                         fade : function () {
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 $t.fadeOut (
                                     animationSpeed[1],
                                     animationEasing[1],
@@ -162,17 +162,17 @@
                                         txt ( $t, parts[indexParts] ).fadeIn ( animationSpeed[0], animationEasing[0] );
                                     }
                                 );
-                            } else if ( settings.animationType === 'in' ) {
-                                $t.css ( 'display', 'none' );
+                            } else if ( settings.animationType === "in" ) {
+                                $t.css ( "display", "none" );
                                 txt ( $t, parts[indexParts] );
                                 $t.fadeIn ( animationSpeed[0], animationEasing[0] );
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 $t.fadeOut (
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function () {
                                         txt ( $t, parts[indexParts] );
-                                        $t.css ( 'display', display );
+                                        $t.css ( "display", display );
                                     }
                                 );
                             }
@@ -187,9 +187,9 @@
 
                             function scaleFxCSS ( fx ) {
                                 $ ( fx.elem ).css ( {
-                                    '-webkit-transform' : 'scale(' + fx.now + ')',
-                                    '-ms-transform'     : 'scale(' + fx.now + ')',
-                                    'transform'         : 'scale(' + fx.now + ')'
+                                    "-webkit-transform" : "scale(" + fx.now + ")",
+                                    "-ms-transform"     : "scale(" + fx.now + ")",
+                                    "transform"         : "scale(" + fx.now + ")"
                                 } );
                             }
 
@@ -205,7 +205,7 @@
                                 }
                             };
 
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 $t.animate (
                                     { transformScaleOut : settings.animationScale[1] },
                                     animationSpeed[1],
@@ -214,11 +214,11 @@
                                         txt ( $t, parts[indexParts] ).animate ( { transformScaleIn : settings.animationScale[0] }, animationSpeed[0], animationEasing[0] );
                                     }
                                 );
-                            } else if ( settings.animationType === 'in' ) {
+                            } else if ( settings.animationType === "in" ) {
                                 $t.css ( {
-                                    '-webkit-transform' : 'scale(' + settings.animationScale[1] + ')',
-                                    '-ms-transform'     : 'scale(' + settings.animationScale[1] + ')',
-                                    'transform'         : 'scale(' + settings.animationScale[1] + ')'
+                                    "-webkit-transform" : "scale(" + settings.animationScale[1] + ")",
+                                    "-ms-transform"     : "scale(" + settings.animationScale[1] + ")",
+                                    "transform"         : "scale(" + settings.animationScale[1] + ")"
                                 } );
                                 txt ( $t, parts[indexParts] ).animate (
                                     { transformScaleIn : settings.animationScale[0] },
@@ -226,16 +226,16 @@
                                     animationEasing[0]
                                 );
 
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 $t.animate (
                                     { transformScaleOut : settings.animationScale[1] },
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function () {
                                         txt ( $t, parts[indexParts] ).css ( {
-                                            '-webkit-transform' : 'scale(' + settings.animationScale[0] + ')',
-                                            '-ms-transform'     : 'scale(' + settings.animationScale[0] + ')',
-                                            'transform'         : 'scale(' + settings.animationScale[0] + ')'
+                                            "-webkit-transform" : "scale(" + settings.animationScale[0] + ")",
+                                            "-ms-transform"     : "scale(" + settings.animationScale[0] + ")",
+                                            "transform"         : "scale(" + settings.animationScale[0] + ")"
                                         } );
 
                                     }
@@ -253,9 +253,9 @@
 
                             function spinFxCSS ( fx, calcTransform ) {
                                 $ ( fx.elem ).css ( {
-                                    '-webkit-transform' : 'translateZ(0) rotate(' + calcTransform + 'deg) scale(' + fx.now + ')',
-                                    '-ms-transform'     : 'translate(0, 0) rotate(' + calcTransform + 'deg) scale(' + fx.now + ')',
-                                    'transform'         : 'translateZ(0) rotate(' + calcTransform + 'deg) scale(' + fx.now + ')'
+                                    "-webkit-transform" : "translateZ(0) rotate(" + calcTransform + "deg) scale(" + fx.now + ")",
+                                    "-ms-transform"     : "translate(0, 0) rotate(" + calcTransform + "deg) scale(" + fx.now + ")",
+                                    "transform"         : "translateZ(0) rotate(" + calcTransform + "deg) scale(" + fx.now + ")"
                                 } );
                             }
 
@@ -273,11 +273,11 @@
                                 }
                             };
 
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 $t.css ( {
-                                    '-webkit-transform' : 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
-                                    '-ms-transform'     : 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
-                                    'transform'         : 'rotate(0deg) scale(' + settings.animationScale[0] + ')'
+                                    "-webkit-transform" : "rotate(0deg) scale(" + settings.animationScale[0] + ")",
+                                    "-ms-transform"     : "rotate(0deg) scale(" + settings.animationScale[0] + ")",
+                                    "transform"         : "rotate(0deg) scale(" + settings.animationScale[0] + ")"
                                 } ).animate (
                                     { transformSpinOut : settings.animationScale[1] },
                                     animationSpeed[1],
@@ -286,27 +286,27 @@
                                         txt ( $t, parts[indexParts] ).animate ( { transformSpinIn : settings.animationScale[0] }, animationSpeed[0], animationEasing[0] );
                                     }
                                 );
-                            } else if ( settings.animationType === 'in' ) {
+                            } else if ( settings.animationType === "in" ) {
                                 $t.css ( {
-                                    '-webkit-transform' : 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')',
-                                    '-ms-transform'     : 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')',
-                                    'transform'         : 'rotate(' + animationRotateDeg[1] + 'deg) scale(' + settings.animationScale[1] + ')'
+                                    "-webkit-transform" : "rotate(" + animationRotateDeg[1] + "deg) scale(" + settings.animationScale[1] + ")",
+                                    "-ms-transform"     : "rotate(" + animationRotateDeg[1] + "deg) scale(" + settings.animationScale[1] + ")",
+                                    "transform"         : "rotate(" + animationRotateDeg[1] + "deg) scale(" + settings.animationScale[1] + ")"
                                 } );
                                 txt ( $t, parts[indexParts] ).animate (
                                     { transformSpinIn : settings.animationScale[0] },
                                     animationSpeed[0],
                                     animationEasing[0]
                                 );
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 $t.animate (
                                     { transformSpinOut : settings.animationScale[1] },
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function () {
                                         txt ( $t, parts[indexParts] ).css ( {
-                                            '-webkit-transform' : 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
-                                            '-ms-transform'     : 'rotate(0deg) scale(' + settings.animationScale[0] + ')',
-                                            'transform'         : 'rotate(0deg) scale(' + settings.animationScale[0] + ')'
+                                            "-webkit-transform" : "rotate(0deg) scale(" + settings.animationScale[0] + ")",
+                                            "-ms-transform"     : "rotate(0deg) scale(" + settings.animationScale[0] + ")",
+                                            "transform"         : "rotate(0deg) scale(" + settings.animationScale[0] + ")"
                                         } );
 
                                     }
@@ -323,8 +323,8 @@
 
                             function flipYFxCSS ( fx ) {
                                 $ ( fx.elem ).css ( {
-                                    '-webkit-transform' : 'rotateY(' + fx.now + 'deg)',
-                                    'transform'         : 'rotateY(' + fx.now + 'deg)'
+                                    "-webkit-transform" : "rotateY(" + fx.now + "deg)",
+                                    "transform"         : "rotateY(" + fx.now + "deg)"
                                 } );
                             }
 
@@ -340,7 +340,7 @@
                                 }
                             };
 
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 $t.animate (
                                     { transformFlipYOut : animationRotateDeg[1] },
                                     animationSpeed[1],
@@ -349,10 +349,10 @@
                                         txt ( $t, parts[indexParts] ).animate ( { transformFlipYIn : animationRotateDeg[0] }, animationSpeed[0], animationEasing[0] );
                                     }
                                 );
-                            } else if ( settings.animationType === 'in' ) {
+                            } else if ( settings.animationType === "in" ) {
                                 $t.css ( {
-                                    '-webkit-transform' : 'rotateY(' + animationRotateDeg[0] + 'deg)',
-                                    'transform'         : 'rotateY(' + animationRotateDeg[0] + 'deg)'
+                                    "-webkit-transform" : "rotateY(" + animationRotateDeg[0] + "deg)",
+                                    "transform"         : "rotateY(" + animationRotateDeg[0] + "deg)"
                                 } );
                                 txt ( $t, parts[indexParts] ).animate (
                                     { transformFlipYIn : animationRotateDeg[0] },
@@ -360,15 +360,15 @@
                                     animationEasing[0]
                                 );
 
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 $t.animate (
                                     { transformFlipYOut : animationRotateDeg[1] },
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function () {
                                         txt ( $t, parts[indexParts] ).css ( {
-                                            '-webkit-transform' : 'rotateY(' + animationRotateDeg[0] + 'deg)',
-                                            'transform'         : 'rotateY(' + animationRotateDeg[0] + 'deg)'
+                                            "-webkit-transform" : "rotateY(" + animationRotateDeg[0] + "deg)",
+                                            "transform"         : "rotateY(" + animationRotateDeg[0] + "deg)"
                                         } );
 
                                     }
@@ -385,8 +385,8 @@
 
                             function flipXFxCSS ( fx ) {
                                 $ ( fx.elem ).css ( {
-                                    '-webkit-transform' : 'rotateX(' + fx.now + 'deg)',
-                                    'transform'         : 'rotateX(' + fx.now + 'deg)'
+                                    "-webkit-transform" : "rotateX(" + fx.now + "deg)",
+                                    "transform"         : "rotateX(" + fx.now + "deg)"
                                 } );
                             }
 
@@ -402,7 +402,7 @@
                                 }
                             };
 
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 $t.animate (
                                     { transformFlipXOut : animationRotateDeg[1] },
                                     animationSpeed[1],
@@ -411,10 +411,10 @@
                                         txt ( $t, parts[indexParts] ).animate ( { transformFlipXIn : animationRotateDeg[0] }, animationSpeed[0], animationEasing[0] );
                                     }
                                 );
-                            } else if ( settings.animationType === 'in' ) {
+                            } else if ( settings.animationType === "in" ) {
                                 $t.css ( {
-                                    '-webkit-transform' : 'rotateX(' + animationRotateDeg[0] + 'deg)',
-                                    'transform'         : 'rotateX(' + animationRotateDeg[0] + 'deg)'
+                                    "-webkit-transform" : "rotateX(" + animationRotateDeg[0] + "deg)",
+                                    "transform"         : "rotateX(" + animationRotateDeg[0] + "deg)"
                                 } );
                                 txt ( $t, parts[indexParts] ).animate (
                                     { transformFlipXIn : animationRotateDeg[0] },
@@ -422,15 +422,15 @@
                                     animationEasing[0]
                                 );
 
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 $t.animate (
                                     { transformFlipXOut : animationRotateDeg[1] },
                                     animationSpeed[1],
                                     animationEasing[1],
                                     function () {
                                         txt ( $t, parts[indexParts] ).css ( {
-                                            '-webkit-transform' : 'rotateX(' + animationRotateDeg[0] + 'deg)',
-                                            'transform'         : 'rotateX(' + animationRotateDeg[0] + 'deg)'
+                                            "-webkit-transform" : "rotateX(" + animationRotateDeg[0] + "deg)",
+                                            "transform"         : "rotateX(" + animationRotateDeg[0] + "deg)"
                                         } );
 
                                     }
@@ -447,10 +447,10 @@
 
                             function animateCssDuration ( $t, dur ) {
                                 $t.css ( {
-                                    '-webkit-animation-duration' : dur + 'ms',
-                                    '-moz-animation-duration'    : dur + 'ms',
-                                    '-o-animation-duration'      : dur + 'ms',
-                                    'animation-duration'         : dur + 'ms'
+                                    "-webkit-animation-duration" : dur + "ms",
+                                    "-moz-animation-duration"    : dur + "ms",
+                                    "-o-animation-duration"      : dur + "ms",
+                                    "animation-duration"         : dur + "ms"
                                 } );
                             }
 
@@ -461,7 +461,7 @@
                                 } );
                             }
 
-                            if ( settings.animationType === 'full' ) {
+                            if ( settings.animationType === "full" ) {
                                 if ( animateCssAnimation[0] === animateCssAnimation[1] ) {
                                     animateCssIn ();
                                 } else {
@@ -473,9 +473,9 @@
                                         } );
                                     } );
                                 }
-                            } else if ( settings.animationType === 'in' ) {
+                            } else if ( settings.animationType === "in" ) {
                                 animateCssIn ();
-                            } else if ( settings.animationType === 'out' ) {
+                            } else if ( settings.animationType === "out" ) {
                                 animateCssDuration ( $t, settings.animationSpeed[1] );
                                 $t.addClass ( animateCssAnimation[1] ).one ( animateEventEnd, function () {
                                     txt ( $t, parts[indexParts] ).removeClass ( animateCssAnimation[1] );
@@ -487,12 +487,12 @@
                 if ( $t.data ().atrContentOriginal ) {
                     $t.html ( $t.data ().atrContentOriginal );
                 } else {
-                    $t.data ( 'atrContentOriginal', $t.html () );
+                    $t.data ( "atrContentOriginal", $t.html () );
                 }
 
-                if ( settings.animation === 'animateCss' ) {
+                if ( settings.animation === "animateCss" ) {
                     $t.addClass ( settings.animateCssClass );
-                    $t.data ( 'atrAnimateCssClass', settings.animateCssClass );
+                    $t.data ( "atrAnimateCssClass", settings.animateCssClass );
                 }
 
                 /**
@@ -501,9 +501,9 @@
                  * Данные для использования. Вы можете использовать это в своих целях.
                  */
                 $t.data ( {
-                    'atrInit'      : true,
-                    'atrSeparator' : settings.separator,
-                    'atrTrim'      : settings.trim
+                    "atrInit"      : true,
+                    "atrSeparator" : settings.separator,
+                    "atrTrim"      : settings.trim
                 } );
 
                 /**
@@ -511,7 +511,7 @@
                  * ---------------------------------------------
                  * Если есть пользовательский CSS, то используем
                  */
-                if ( settings.css && typeof settings.css === 'object' ) {
+                if ( settings.css && typeof settings.css === "object" ) {
                     $t.css ( settings.css );
                 }
 
@@ -536,7 +536,7 @@
                  */
                 indexParts = ( settings.reverse ) ? parts.length - 1 : 0;
                 txt ( $t, parts[indexParts] );
-                $t.data ( 'atrIndexParts', indexParts );
+                $t.data ( "atrIndexParts", indexParts );
 
                 /**
                  * Function define what the next will be the index of the parts for rotation.
@@ -583,7 +583,7 @@
 
                         var animateSingle = function () {
                             indexParts = nextIndexParts ( $.inArray ( txt ( $t ), parts ) );
-                            $t.data ( 'atrIndexParts', indexParts );
+                            $t.data ( "atrIndexParts", indexParts );
 
                             /**
                              * Select the animation and work with
@@ -598,11 +598,11 @@
 
                         };
 
-                        if ( settings.method === 'single' ) {
+                        if ( settings.method === "single" ) {
 
                             animateSingle ();
 
-                        } else if ( settings.method === 'group' ) {
+                        } else if ( settings.method === "group" ) {
 
                             var timeoutGroup = setTimeout ( animateSingle, settings.delay * indexCurrent );
 
@@ -611,19 +611,19 @@
                              * ---------------------------------------------------------------------------
                              * Идентификатор задержки смены текста элемента группы. Вы можете использовать это в своих целях.
                              */
-                            $t.data ( 'atrTimeoutGroup', timeoutGroup );
+                            $t.data ( "atrTimeoutGroup", timeoutGroup );
                         }
 
                     };
 
                     /**
-                     * It's time to put an endless cycle change text
+                     * It"s time to put an endless cycle change text
                      * -------------------------------------------------------
                      * Пришло время пустить по бесконечному кругу смену текста
                      */
                     var timeoutStart = setTimeout ( function () {
 
-                            $t.removeData ( 'atrTimeoutStart' );
+                            $t.removeData ( "atrTimeoutStart" );
 
                             animate ();
 
@@ -634,7 +634,7 @@
                              * -----------------------------------------------------------------------------------------------------------------
                              * Идентификатор интервала между сменой текста элемента / группы элементов. Вы можете использовать это в своих целях.
                              */
-                            $t.data ( 'atrIntervalMain', intervalMain );
+                            $t.data ( "atrIntervalMain", intervalMain );
 
                         },
                         settings.delayStart
@@ -645,7 +645,7 @@
                      * -------------------------------------------------------------------------------------------
                      * Идентификатор задержки перед стартом смены текста. Вы можете использовать это в своих целях.
                      */
-                    $t.data ( 'atrTimeoutStart', timeoutStart );
+                    $t.data ( "atrTimeoutStart", timeoutStart );
                 }
             };
 
@@ -666,7 +666,7 @@
 
             var settings = $.extend (
                 {
-                    content   : 'currentPart',
+                    content   : "currentPart",
                     separator : $ ( this ).data ().atrSeparator,
                     trim      : $ ( this ).data ().atrTrim
                 },
@@ -679,19 +679,19 @@
 
                 switch ( settings.content ) {
 
-                    case 'original':
+                    case "original":
                         $t.html ( d );
                         break;
 
-                    case 'firstPart':
+                    case "firstPart":
                         $t.html ( ( settings.trim ) ? $.trim ( parts[0] ) : parts[0] );
                         break;
 
-                    case 'lastPart':
+                    case "lastPart":
                         $t.html ( ( settings.trim ) ? $.trim ( parts[parts.length - 1] ) : parts[parts.length - 1] );
                         break;
 
-                    case 'currentPart':
+                    case "currentPart":
                         $t.html ( ( settings.trim ) ? $.trim ( parts[$t.data ().atrIndexParts] ) : parts[$t.data ().atrIndexParts] );
                         break;
                 }
@@ -716,7 +716,7 @@
                      */
                     if ( data.atrAnimateCssClass ) {
                         $t.removeClass ( data.atrAnimateCssClass );
-                        $t.removeData ( 'atrAnimateCssClass' );
+                        $t.removeData ( "atrAnimateCssClass" );
                     }
 
                     /**
@@ -726,7 +726,7 @@
                      */
                     if ( data.atrTimeoutStart ) {
                         clearTimeout ( data.atrTimeoutStart );
-                        $t.removeData ( 'atrTimeoutStart' );
+                        $t.removeData ( "atrTimeoutStart" );
                     }
 
                     /**
@@ -736,7 +736,7 @@
                      */
                     if ( data.atrTimeoutGroup ) {
                         clearTimeout ( data.atrTimeoutGroup );
-                        $t.removeData ( 'atrTimeoutGroup' );
+                        $t.removeData ( "atrTimeoutGroup" );
                     }
 
                     /**
@@ -746,7 +746,7 @@
                      */
                     if ( data.atrIntervalMain ) {
                         clearInterval ( data.atrIntervalMain );
-                        $t.removeData ( 'atrIntervalMain' );
+                        $t.removeData ( "atrIntervalMain" );
                     }
 
                     /**
@@ -756,7 +756,7 @@
                      */
                     if ( data.atrContentOriginal ) {
 
-                        $t.stop ().removeAttr ( 'style' ).removeData ( 'atrInit' );
+                        $t.stop ().removeAttr ( "style" ).removeData ( "atrInit" );
 
                         fillingContent ( $t, data.atrContentOriginal );
                     }
@@ -815,10 +815,10 @@
 
         if ( methods[method] ) {
             return methods[method].apply ( this, Array.prototype.slice.call ( arguments, 1 ) );
-        } else if ( typeof method === 'object' || !method ) {
+        } else if ( typeof method === "object" || !method ) {
             return methods.init.apply ( this, arguments );
         } else {
-            $.error ( 'A method named "' + method + '" does not exist for jQuery.atrotating' );
+            $.error ( "A method named \"" + method + "\" does not exist for jQuery.atrotating" );
         }
 
     };

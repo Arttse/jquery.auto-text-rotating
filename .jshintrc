@@ -11,9 +11,13 @@
   "maxcomplexity": false,
   "nonbsp": true,
   "notypeof": false,
-  "boss": false,
+  "boss": true,
   "evil": false,
   "browser": true,
+  "expr": true,
+  "immed": true,
+  "noarg": true,
+  "quotmark": "double",
   "globals": {
     "define": false,
     "module": false
