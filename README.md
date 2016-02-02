@@ -18,6 +18,7 @@
 - The ability to control the settings of the animation of the appearance of the text and disappearance.
 - 5 animations support functions smooth (Easing).
 - Support animations Animate.css.
+- The plugin can also be loaded as AMD module.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
