@@ -47,6 +47,6 @@
     "grunt-contrib-jshint": "^1.x.x",
     "grunt-contrib-uglify": "^1.x.x",
     "grunt-doctoc": "^0.1.1",
-    "jshint-stylish": "^2.1.0"
+    "jshint-stylish": "^2.2.0"
   }
 }
