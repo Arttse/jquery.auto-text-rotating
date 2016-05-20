@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/Arttse/jquery.auto-text-rotating",
   "dependencies": {
-    "jquery": ">=1.4.3"
+    "jquery": ">=2.2.4"
   },
   "devDependencies": {
     "grunt": "^1.x.x",
